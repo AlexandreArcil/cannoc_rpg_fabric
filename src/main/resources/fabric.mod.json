@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "cnrpg",
+  "version": "${version}",
+
+  "name": "CanardNocturne RPG",
+  "description": "A RPG mod with classes",
+  "authors": [
+    "CanardNocturne"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/cnrpg/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.canardnocturne.cnrpg.CNRPG"
+    ],
+    "client": ["fr.canardnocturne.cnrpg.CNRPGClient"]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
