@@ -1,9 +1,7 @@
 package fr.canardnocturne.cnrpg.guis;
 
-import fr.canardnocturne.cnrpg.guis.presentation.AssassinPresentation;
 import fr.canardnocturne.cnrpg.guis.presentation.Presentations;
 import fr.canardnocturne.cnrpg.guis.presentation.RolePresentation;
-import fr.canardnocturne.cnrpg.guis.presentation.WizardPresentation;
 import fr.canardnocturne.cnrpg.guis.widget.RoleWidget;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -40,8 +38,8 @@ public class ChooseRoleScreen extends Screen {
         super.render(matrices, mouseX, mouseY, delta);
     }
 
-    @Override
+   /* @Override
     public boolean isPauseScreen() {
         return super.isPauseScreen();
-    }
+    }*/
 }
