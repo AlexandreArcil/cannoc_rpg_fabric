@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "cnrpg",
-  "version": "${version}",
+  "version": "1.0.0",
 
   "name": "CanardNocturne RPG",
   "description": "A RPG mod with classes",
@@ -21,7 +21,15 @@
     "main": [
       "fr.canardnocturne.cnrpg.CNRPG"
     ],
-    "client": ["fr.canardnocturne.cnrpg.CNRPGClient"]
+    "client": [
+      "fr.canardnocturne.cnrpg.client.CNRPGClient"
+    ],
+    "server": [
+      "fr.canardnocturne.cnrpg.server.CNRPGServer"
+    ],
+    "cardinal-components": [
+      "fr.canardnocturne.cnrpg.roles.component.CNRPGComponents"
+    ]
   },
 
   "depends": {
@@ -32,5 +40,9 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "mixins": ["cnrpg.mixins.json"],
+  "custom": {
+    "cardinal-components": ["cnrpg:role", "cnrpg:role_stat"]
   }
 }

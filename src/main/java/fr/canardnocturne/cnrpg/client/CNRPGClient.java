@@ -1,4 +1,4 @@
-package fr.canardnocturne.cnrpg;
+package fr.canardnocturne.cnrpg.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;

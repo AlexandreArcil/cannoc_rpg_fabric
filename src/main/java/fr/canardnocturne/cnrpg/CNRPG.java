@@ -1,15 +1,17 @@
 package fr.canardnocturne.cnrpg;
 
-import fr.canardnocturne.cnrpg.guis.ChooseRoleScreen;
+import fr.canardnocturne.cnrpg.client.guis.ChooseRoleScreen;
+import fr.canardnocturne.cnrpg.items.CNRPGItems;
+import fr.canardnocturne.cnrpg.server.SetRolePacketReceiver;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.gui.screen.GameMenuScreen;
-import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.LiteralText;
-import net.minecraft.world.WorldEvents;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,11 +22,21 @@ public class CNRPG implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "knife"), CNRPGItems.KNIFE);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "long_sword"), CNRPGItems.LONG_SWORD);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "assassin_boots"), CNRPGItems.ASSASSIN_BOOTS);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "assassin_leggings"), CNRPGItems.ASSASSIN_LEGS);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "assassin_chestplate"), CNRPGItems.ASSASSIN_CHESTPLATE);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "assassin_helmet"), CNRPGItems.ASSASSIN_HELMET);
+
+		SetRolePacketReceiver.register();
+
 		ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
 			client.execute(() -> client.setScreen(new ChooseRoleScreen()));
 		});
+
 		ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
-			LOGGER.info(screen.getClass());
+//			LOGGER.info(screen.getClass());
 			if(screen.getClass() == GameMenuScreen.class) {
 				Screens.getButtons(screen).add(new ButtonWidget(0, 0, 100, 20, new LiteralText("ChooseRole"), new ButtonWidget.PressAction() {
 					@Override
@@ -35,7 +47,7 @@ public class CNRPG implements ModInitializer {
 			}
 		});
 
-//		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "item_test"), ItemsModTest.TEST_ITEM);
+
 		/*PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
 			ItemStack is = player.getStackInHand(player.getActiveHand());
 			if(state.getMaterial() == Material.WOOD && is.getItem() instanceof AxeItem) {

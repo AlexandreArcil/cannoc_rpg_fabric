@@ -1,3 +1,8 @@
 {
-  "item.modtest.item_test": "Mod test Item"
+  "item.cnrpg.knife": "Knife",
+  "item.cnrpg.long_sword": "Long sword",
+  "item.cnrpg.assassin_boots": "Assassin boots",
+  "item.cnrpg.assassin_leggings": "Assassin leggings",
+  "item.cnrpg.assassin_chestplate": "Assassin chestplate",
+  "item.cnrpg.assassin_helmet": "Assassin helmet"
 }
