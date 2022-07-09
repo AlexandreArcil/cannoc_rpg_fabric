@@ -1,6 +1,7 @@
 package fr.canardnocturne.cnrpg;
 
 import fr.canardnocturne.cnrpg.client.guis.ChooseRoleScreen;
+import fr.canardnocturne.cnrpg.client.guis.SkillsScreen;
 import fr.canardnocturne.cnrpg.items.CNRPGItems;
 import fr.canardnocturne.cnrpg.server.SetRolePacketReceiver;
 import net.fabricmc.api.ModInitializer;
@@ -8,6 +9,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.gui.screen.GameMenuScreen;
+import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
@@ -36,14 +38,12 @@ public class CNRPG implements ModInitializer {
 		});
 
 		ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
-//			LOGGER.info(screen.getClass());
 			if(screen.getClass() == GameMenuScreen.class) {
-				Screens.getButtons(screen).add(new ButtonWidget(0, 0, 100, 20, new LiteralText("ChooseRole"), new ButtonWidget.PressAction() {
-					@Override
-					public void onPress(ButtonWidget button) {
-						client.setScreen(new ChooseRoleScreen());
-					}
-				}));
+				Screens.getButtons(screen).add(new ButtonWidget(0, 0, 100, 20, new LiteralText("ChooseRole"),
+						button -> client.setScreen(new ChooseRoleScreen())));
+			} else if (screen.getClass() == InventoryScreen.class) {
+				Screens.getButtons(screen).add(new ButtonWidget((screen.width - 176) / 2 + 125, screen.height / 2 - 22, 100, 20, new LiteralText("Manage Skills"),
+						button -> client.setScreen(new SkillsScreen())));
 			}
 		});
 

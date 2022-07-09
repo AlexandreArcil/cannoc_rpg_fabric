@@ -5,8 +5,6 @@ import fr.canardnocturne.cnrpg.client.CNRPGClient;
 import fr.canardnocturne.cnrpg.network.CNRPGPackets;
 import fr.canardnocturne.cnrpg.roles.Role;
 import fr.canardnocturne.cnrpg.roles.RoleStat;
-import fr.canardnocturne.cnrpg.roles.Roles;
-import fr.canardnocturne.cnrpg.roles.component.CNRPGComponents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
